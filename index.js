@@ -1,7 +1,8 @@
+import 'dotenv/config'
 import express from 'express'
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 //+++++++++++++TO SEND THE DATA++++++++++++++++++
 
@@ -39,7 +40,6 @@ app.post('/teas', (req, res) => {
     teaData.push(newTea)
     res.status(201).send(newTea)
 })
-
 //get all tea list
 app.get('/teas', (req, res) => {
     res.status(200).send(teaData)
@@ -62,7 +62,6 @@ app.put('/teas/:id',(req,res)=>{
     tea.price = price;
     res.status(200).send(tea)
 })
-
 //delete tea
 app.delete('/teas/:id',(req,res)=>{
     // const tea = teaData.find(t => t.id === parseInt(req.params.id))
